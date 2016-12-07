@@ -1,0 +1,29 @@
+<%= form_for(@comment) do |f| %>
+<%if @comment.errors.any? %>
+  <div class="error_explanation">
+      <h2><%= pluralize(@comment.errors.count, "error")%></h2>
+      <ul>
+          <% @comment.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end %>
+      </ul>
+  </div>
+  <% end %>
+
+  <div class="form-group">
+      <%= f.text_field :author, class: "form-control", placeholder: "author" %>
+  </div>
+
+  <div class="form-group">
+      <%= f.text_area :comment_entry, class: "form-control", rows: "3", placeholder: "Enter your comment here ..." %>
+  </div>
+<!-- Grabs post id below -->
+  <div class="form-group hidden">
+    <%= f.number_field :blog_post_id, value: @blog_post.id %>
+  </div>
+
+  <div class="actions">
+      <%= f.submit "Comment", class: "btn btn-default" %>
+  </div>
+
+  <% end %>
