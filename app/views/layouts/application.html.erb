@@ -1,16 +1,28 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>LatoriBlog</title>
+    <title>Reasons to Smile</title>
     <%= csrf_meta_tags %>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Kaushan+Script|Poiret+One" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
   </head>
 
   <body>
+    <div class="container">
+        <div class="pull-right">
+            <% if user_signed_in? %>
+              <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-primary" %>
+              <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-danger" %>
+            <% else %>
+              <%= link_to "Log In", new_user_session_path, class: "btn btn-info" %>
+              <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-primary" %>
+            <% end %>
+        </div>
+    </div>
     <%= yield %>
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>

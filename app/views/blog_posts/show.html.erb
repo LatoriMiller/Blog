@@ -5,7 +5,7 @@
         <%= @blog_post.title %>
     </div>
     <div class= "panel-body">
-        <p><%= @blog_post.author %></p>
+        <p><%= @blog_post.user.name %></p>
         <p><%= time_ago_in_words(@blog_post.created_at) %> ago</p>
         <p><%= @blog_post.blog_entry %></p>
     </div>
