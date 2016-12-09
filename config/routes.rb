@@ -7,6 +7,10 @@ Rails.application.routes.draw do
 
   root 'blog_posts#index'
 
+  get 'your_posts' => 'blog_posts#your_posts'
+
+  get 'user_profile' => 'blog_posts#user_profile'
+
 end
 # get 'document' => 'blog_posts#newroute'
 # HOW TO ADD ROUTES  (where newroute is created in the view and controller)

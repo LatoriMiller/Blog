@@ -1,6 +1,8 @@
 <div class="container">
-<h4 text-align="center" >Welcome <%= current_user.name %></h4>
-  <div class="picture">
+<h1><%= @user.username %>'s Page </h1>
+<p><strong>Name:</strong><%= @user.name %></p>
+<p><strong>Birthday:</strong><%= @user.birthdate.strftime("%m/%d/%Y")%></p>
+<div class="picture">
 <!--Need to reate an empty container to create the blank space and remove br tags  -->
 <br>
 <br>
@@ -15,7 +17,7 @@
 <br>
 <h4>Current Posts:</h4>
 <div class="row">
-    <% @blog_posts.each do |blog_post| %>
+    <% @user.blog_posts.each do |blog_post| %>
       <div class="col-md-6">
           <div class="panel panel-default">
               <div class="panel-heading">
@@ -23,16 +25,19 @@
               </div>
 
               <div class="panel-body">
-                  by <%= link_to blog_post.user.username, user_profile_path(id: blog_post.user.id) %> <br />
+                  by <%= link_to blog_post.user.username %> <br />
                   <p>Created at: <%= blog_post.created_at.strftime('%m/ %d/ %y %I:%m%p')%></p>
                   <p><%= blog_post.blog_entry[0..50] %><%=link_to ' Read More', blog_post %></p>
               </div>
               <div class="panel-footer">
-                <% if current_user.id == blog_post.user.id %>
                   <%= link_to 'Edit', edit_blog_post_path(blog_post), class: "btn btn-warning" %>
                   <%= link_to 'Destroy', blog_post, method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger" %>
-                <% end %>
               </div>
           </div>
       </div>
     <% end %>
+
+
+</div>
+<%= link_to "New Blog Post", new_blog_post_path, class: "btn btn-info" %>
+</div>
